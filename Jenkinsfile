@@ -4,14 +4,22 @@ pipeline {
         stage('Build') {
             steps {
                 script {
-                    echo "This is build"
+                    echo "Building..."
                 }
             }
         }
+        // ... other stages
+    }
+    post {
+        always {
+            echo "This will always run"
+        }
+        success {
+            echo "Build succeeded!"
+        }
+        failure {
+            echo "Build failed!"
+        }
+        // ... other post-conditions
     }
 }
-  post { 
-        always { 
-            echo 'I will always say Hello again!'
-        }
-    }
